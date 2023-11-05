@@ -1,0 +1,91 @@
+body {
+    background-color: rgb(254, 250, 240);
+  }
+  
+
+  .hero-section-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+   
+   
+    background-image: url('https://img.freepik.com/free-photo/horizontal-banner-cosmetic-product-with-jade-roller-gua-sha_23-2149446529.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    color: rgb(92, 92, 66);
+    font-size: 80%;
+  }
+  
+  .hero-section-contact h2 {
+    font-size: 80px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    margin-left: 40%;
+    margin-top: 5%;
+  }
+ 
+
+  
+  .page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    
+  }
+  
+  .form-container {
+    border-radius: 10px;
+    padding: 30px;
+    background-color: rgb(228, 220, 199,50%);
+    width: 300%; 
+    color: rgb(92, 92, 66);
+    text-align: center;
+    
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+  
+  .form label {
+    text-align: left;
+    font-weight: bold;
+  }
+
+
+
+  .form input[type="text"],
+  .form input[type="email"],
+  .form textarea {
+      background-color: rgb(92, 92, 66,10%); 
+  }
+
+  
+  .text {
+   
+      padding: 20px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      margin-right: 1%;
+      color: rgb(92, 92, 66);
+      font-size: 20px;
+     margin-left: 50%;
+     
+    }
+ 
+
+
+
+  @media screen and (max-width: 768px) {
+    .hero-section h2 {
+      font-size: 50px;
+    }
+    
+ 
+  }
+
+  

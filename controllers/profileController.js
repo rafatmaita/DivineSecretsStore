@@ -1,4 +1,5 @@
 const userModel = require('../models/profileModel');
+const pool = require('../db');
 
 const updateUser = async (req, res) => {
   const userId = req.params.userId;
@@ -29,11 +30,44 @@ const getUserDetails = async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   }
-
+  
+  const uploadImage = async (req, res) => {
+    if (req.file) {
+      const user_id = req.params.user_id;
+  
+      try {
+        const result = await userModel.uploadImage(pool, req, user_id, req.file.path);
+        res.send(result);
+      } catch (err) {
+        console.error(err);
+        res.status(500).send('Error occurred while uploading the file');
+      }
+    } else {
+      res.status(400).send('No file uploaded');
+    }
+  };
+  
+  const getImage = async (req, res) => {
+    const user_id = req.params.user_id;
+  
+    try {
+      const imageUrl = await userModel.getImage(pool, user_id);
+      if (imageUrl) {
+        res.json({ image_url: imageUrl });
+      } else {
+        res.status(404).send('Image not found for this user');
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Error fetching image');
+    }
+  };
 
 
 module.exports = {
   updateUser,
-  getUserDetails
+  getUserDetails,
+  getImage,
+  uploadImage
 
 };

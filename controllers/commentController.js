@@ -1,4 +1,3 @@
-// controllers/commentController.js
 const commentModel = require('../models/commentModel');
 
 const addComment = async (req, res) => {

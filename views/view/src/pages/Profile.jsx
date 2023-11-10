@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import OrderHistory from './OrderHistory';
 import axios from 'axios';
+// import image from "../../src/profileImages"
 
 const Profile = () => {
   const { userId = 1 } = useParams();
@@ -29,7 +30,6 @@ const Profile = () => {
       });
   };
 
-
   useEffect(() => {
     axios.get(`http://localhost:5002/user/${userId}`)
       .then((response) => setUserData(response.data))
@@ -38,7 +38,23 @@ const Profile = () => {
 
   const isDataModified = JSON.stringify(newUserData) !== JSON.stringify(userData);
 
+  const [userimage, setUserImage] = useState([]);
+  const {user_id} = useParams();
+  useEffect(() => {
+    axios.get(`http://localhost:5002/user/image/${userId}`)
+      .then((response) => {
+        let image = response.data.image_url;
+        image = image.slice(14);
+        setUserImage(image);
+        console.log( image );
 
+      })
+      .catch((error) => console.error(error));
+      
+  }, [userId]);
+
+  
+  // console.log(userimage);
 
 
 
@@ -47,7 +63,9 @@ const Profile = () => {
       <div className="sm">
         <div className="text-center p-4">
           <img
-            src={userData?.image || "https://img.freepik.com/premium-vector/avatar-icon002_750950-52.jpg?size=338&ext=jpg&ga=GA1.1.1880011253.1699056000&semt=ais"}
+          // userimage? `http://localhost:5002/user/${userimage}` : 'no image'
+          // require(`../../src/profileImages/${userimage}`)
+            src={`../src/profileImages/${userimage}`}
             alt="User Image"
             className="h-32 w-32 rounded-full mx-auto"
           />

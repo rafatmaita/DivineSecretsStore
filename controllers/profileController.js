@@ -23,7 +23,6 @@ const getUserDetails = async (req, res) => {
         return;
       }
   
-      // Return only the required fields (username and email)
       const { username, email } = user;
       res.json({ username, email });
     } catch (error) {

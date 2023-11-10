@@ -1,5 +1,5 @@
 // models/commentModel.js
-const pool = require('../db'); // Your PostgreSQL database connection
+const pool = require('../db'); 
 
 const addComment = async (name, email, message) => {
   try {

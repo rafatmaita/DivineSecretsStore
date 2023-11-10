@@ -20,7 +20,7 @@ const ContactUs = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5001/addComment', formData);
+      const response = await axios.post('http://localhost:5002/addComment', formData);
       
       console.log(response.data);
     } catch (error) {
